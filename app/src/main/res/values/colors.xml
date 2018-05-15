@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="toolbar_color">#00000000</color>
+    <color name="toolbar_color_2">#fae554</color>
+    <color name="toolbar_color_3">#e1e1e1</color>
+    <color name="transparency">#00000000</color>
+    <color name="room_service_color">#e1e1e1</color>
+    <color name="room_item_title">#000</color>
+    <color name="home_service_text">#000</color>
+    <color name="home_bg">#f5f6f6</color>
+    <color name="click_bg">#444</color>
+    <color name="youzan_title">#333333</color>
+    <color name="youzan_subhead">#999999</color>
+    <color name="youzan_white_bg">#ffffff</color>
+    <color name="youzan_three_bg">#ffeeee</color>
+    <color name="progress_bg">#80000000</color>
+</resources>
