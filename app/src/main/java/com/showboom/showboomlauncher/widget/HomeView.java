@@ -20,6 +20,7 @@ import com.showboom.showboomlauncher.R;
 import com.showboom.showboomlauncher.activity.WebViewActivity;
 import com.showboom.showboomlauncher.listener.NoDoubleClickListener;
 import com.showboom.showboomlauncher.loader.GlideImageLoader;
+import com.showboom.showboomlauncher.utils.StringUtil;
 import com.showboom.showboomlauncher.utils.T;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
@@ -39,6 +40,7 @@ public class HomeView extends RelativeLayout implements OnBannerListener, MyScro
     public static final String WIFI_AP_STATE_CHANGE_ACTION = "android.net.wifi.WIFI_AP_STATE_CHANGED";
     public static final String HomeActivity = "com.heimilink.showboom.activity.HomeActivity";
     public static final String WiFiActivity = "com.heimilink.showboom.activity.SetWifiActivity";
+    private static String ROOM_SERVICE = "http://hsi.test.showboom.cn/hotelserver.html#/?";
     public static List<?> images = new ArrayList<>();
     private Context context;
     private Banner banner;
@@ -169,10 +171,9 @@ public class HomeView extends RelativeLayout implements OnBannerListener, MyScro
 
                 break;
             case R.id.home_service_two:
-
-                break;
             case R.id.home_service_three:
-
+                String url = ROOM_SERVICE + "imei=" + StringUtil.getPhoneImei();
+                startWebActivity(url.trim());
                 break;
             case R.id.home_service_four:
                 startShowBoomApp(WiFiActivity);
