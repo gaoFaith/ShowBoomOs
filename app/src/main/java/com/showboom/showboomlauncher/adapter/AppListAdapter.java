@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.showboom.showboomlauncher.R;
+import com.showboom.showboomlauncher.activity.WebViewActivity;
 import com.showboom.showboomlauncher.widget.ProgressButton;
 
 import java.io.File;
@@ -62,6 +63,7 @@ public class AppListAdapter extends BaseAdapter {
     private SharedPreferences mSP_Install;
     private HashMap<Long, HolderRecord> mHolderMaps = new HashMap<>();
     DownloadManager downloadManager;
+    static boolean mSupportSilentInstall;
 
     public AppListAdapter(Context context, List<AppListItem> appList) {
         mContext = context;
@@ -69,11 +71,13 @@ public class AppListAdapter extends BaseAdapter {
         mInflater = LayoutInflater.from(context);
 
         mSP_Install = mContext.getSharedPreferences(INSTALL_MAP_FILE, 0);
-        //mInstallMaps = (HashMap<String, String>) mSP_Install.getAll();
+        mInstallMaps = (HashMap<String, String>) mSP_Install.getAll();
 
         downloadManager = (DownloadManager)mContext.getSystemService(Context.DOWNLOAD_SERVICE);
 
         mHandler = new MainHandler(mContext);
+
+        mSupportSilentInstall = Build.BRAND.equals("showboom");
     }
 
     private static class MainHandler extends Handler {
@@ -97,15 +101,16 @@ public class AppListAdapter extends BaseAdapter {
                         String fileName = holder.fileName;
                         String pkgName = holder.pkgName;
                         holder.viewHolder.btnInstall.setText(R.string.app_btn_installing);
-                        Log.d(TAG, "installApk file="+fileName+" brand="+ Build.BRAND);
+                        Log.d(TAG, "installApk file="+fileName);
                         if(fileName != null) {
-                            if(Build.BRAND.equals("showboom")) {
+                            if(mSupportSilentInstall) {
                                 Intent intent = new Intent("com.heimilink.action.install_or_delete");
                                 intent.putExtra("event", "install");
                                 intent.putExtra("pkgName", pkgName);
                                 intent.putExtra("path", fileName);
                                 context.sendBroadcast(intent);
                             } else {
+                                holder.viewHolder.btnInstall.setText(R.string.app_btn_install);
                                 File apkfile = new File(fileName);
                                 Intent intent = new Intent(Intent.ACTION_VIEW);
                                 intent.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
@@ -191,7 +196,8 @@ public class AppListAdapter extends BaseAdapter {
                                 msg.obj = holderRecord;
                                 msg.sendToTarget();
 
-                                idList.add(downId);
+                                downloadComplete(id);
+                                idList.add(id);
                             }
                         }
                         cursor.close();
@@ -271,11 +277,11 @@ public class AppListAdapter extends BaseAdapter {
                             viewHolderApp.btnInstall.setVisibility(View.VISIBLE);
                             viewHolderApp.btnOpen.setVisibility(View.GONE);
 
-                            /*if(downId > -1 && btnState == Btn_State_Downloading) {
-                                mHolderMaps.put(downId, new HolderRecord(viewHolderApp, pkgName));
-                            }*/
+                            if(btnState != Btn_State_NotInstall) {
+                                viewHolderApp.btnInstall.setTextColor(mContext.getResources().getColor(R.color.normal_text));
+                            }
 
-                            /*if(downId > -1 && btnState == Btn_State_Installing) {
+                            if(downId > -1 && btnState == Btn_State_Installing) {
                                 DownloadManager.Query query = new DownloadManager.Query();
                                 query.setFilterById(downId);
                                 Cursor cursor = downloadManager.query(query);
@@ -284,17 +290,27 @@ public class AppListAdapter extends BaseAdapter {
                                     int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
 
                                     if(status == DownloadManager.STATUS_SUCCESSFUL) {
-                                        HolderRecord holderRecord = new HolderRecord(viewHolderApp, pkgName);
-                                        holderRecord.fileName = fileName;
+                                        if(mSupportSilentInstall) {
+                                            HolderRecord holderRecord = new HolderRecord(viewHolderApp, pkgName);
+                                            holderRecord.fileName = fileName;
 
-                                        Message msg = mHandler.obtainMessage();
-                                        msg.what = MSG_INSATLL_APK;
-                                        msg.obj = holderRecord;
-                                        msg.sendToTarget();
+                                            Message msg = mHandler.obtainMessage();
+                                            msg.what = MSG_INSATLL_APK;
+                                            msg.obj = holderRecord;
+                                            msg.sendToTarget();
+                                        } else {
+                                            viewHolderApp.btnInstall.setProgress(100);
+                                            viewHolderApp.btnInstall.setText(R.string.app_btn_install);
+                                        }
                                     }
                                 }
                                 cursor.close();
-                            }*/
+                            }
+
+                            if(downId > -1 && btnState == Btn_State_Downloading) {
+                                mHolderMaps.put(downId, new HolderRecord(viewHolderApp, pkgName));
+                                startTimer();
+                            }
 
                             if(btnState == Btn_State_NotInstall) {
                                 viewHolderApp.btnInstall.setText(R.string.app_btn_install);
@@ -303,13 +319,13 @@ public class AppListAdapter extends BaseAdapter {
                             } else if(btnState == Btn_State_Pause) {
                                 viewHolderApp.btnInstall.setText(R.string.app_btn_pause);
                             } else if(btnState == Btn_State_Installing) {
-                                viewHolderApp.btnInstall.setText(R.string.app_btn_installing);
+                                if(mSupportSilentInstall) {
+                                    viewHolderApp.btnInstall.setText(R.string.app_btn_installing);
+                                } else {
+                                    viewHolderApp.btnInstall.setText(R.string.app_btn_install);
+                                }
                             } else if(btnState == Btn_State_Failure) {
                                 viewHolderApp.btnInstall.setText(R.string.app_btn_continue);
-                            }
-
-                            if(btnState != Btn_State_NotInstall) {
-                                viewHolderApp.btnInstall.setTextColor(mContext.getResources().getColor(R.color.normal_text));
                             }
 
                         } else {
@@ -346,35 +362,11 @@ public class AppListAdapter extends BaseAdapter {
                                 if(btnState == Btn_State_NotInstall) {
                                     viewHolderApp.btnInstall.setTextColor(mContext.getResources().getColor(R.color.normal_text));
 
-                                    if(downId > -1) {
-                                        DownloadManager.Query query = new DownloadManager.Query();
-                                        query.setFilterById(downId);
-                                        Cursor cursor = downloadManager.query(query);
-                                        if(cursor.moveToFirst()) {
-                                            String fileName = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME));
-                                            int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
-
-                                            if(status == DownloadManager.STATUS_SUCCESSFUL) {
-                                                HolderRecord holderRecord = new HolderRecord(viewHolderApp, pkgName);
-                                                holderRecord.fileName = fileName;
-
-                                                Message msg = mHandler.obtainMessage();
-                                                msg.what = MSG_INSATLL_APK;
-                                                msg.obj = holderRecord;
-                                                msg.sendToTarget();
-
-                                                cursor.close();
-                                                return;
-                                            }
-                                        }
-                                        cursor.close();
-                                    }
-
                                     //点击安装按钮，开始下载
                                     viewHolderApp.btnInstall.setText(R.string.app_btn_downloading);
 
                                     DownloadManager.Request request = new DownloadManager.Request(Uri.parse(ListItem.getApp().getPkgUrl()));
-                                    //request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
+                                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
                                     long id = downloadManager.enqueue(request);
                                     Log.d(TAG, "downloadManager id="+id);
 
@@ -389,6 +381,29 @@ public class AppListAdapter extends BaseAdapter {
                                     spInstallEditor.putString(pkgName, syncStr);
                                     spInstallEditor.apply();
                                     spInstallEditor.commit();
+                                } else if(btnState == Btn_State_Installing) {
+                                    if(!mSupportSilentInstall) {
+                                        if(downId > -1) {
+                                            DownloadManager.Query query = new DownloadManager.Query();
+                                            query.setFilterById(downId);
+                                            Cursor cursor = downloadManager.query(query);
+                                            if(cursor.moveToFirst()) {
+                                                String fileName = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME));
+                                                int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
+
+                                                if(status == DownloadManager.STATUS_SUCCESSFUL) {
+                                                    HolderRecord holderRecord = new HolderRecord(viewHolderApp, pkgName);
+                                                    holderRecord.fileName = fileName;
+
+                                                    Message msg = mHandler.obtainMessage();
+                                                    msg.what = MSG_INSATLL_APK;
+                                                    msg.obj = holderRecord;
+                                                    msg.sendToTarget();
+                                                }
+                                            }
+                                            cursor.close();
+                                        }
+                                    }
                                 }
                             }
                         });
@@ -403,6 +418,34 @@ public class AppListAdapter extends BaseAdapter {
 
                         loadAdvertImage(mContext, ListItem.getAdvert1().getImageUrl(), viewHolderAdvert.imageViewAdvert1);
                         loadAdvertImage(mContext, ListItem.getAdvert2().getImageUrl(), viewHolderAdvert.imageViewAdvert2);
+
+                        viewHolderAdvert.imageViewAdvert1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                int openType = ListItem.getAdvert1().getOpenType();
+                                if(openType == Advert_Open_Link) {
+                                    Intent intent = new Intent(mContext, WebViewActivity.class);
+                                    intent.putExtra("home_web_url", ListItem.getAdvert1().getOpenTarget());
+                                    mContext.startActivity(intent);
+                                } else if(openType == Advert_Open_App) {
+                                    startApp(mContext, ListItem.getAdvert1().getOpenTarget());
+                                }
+                            }
+                        });
+
+                        viewHolderAdvert.imageViewAdvert2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                int openType = ListItem.getAdvert2().getOpenType();
+                                if(openType == Advert_Open_Link) {
+                                    Intent intent = new Intent(mContext, WebViewActivity.class);
+                                    intent.putExtra("home_web_url", ListItem.getAdvert2().getOpenTarget());
+                                    mContext.startActivity(intent);
+                                } else if(openType == Advert_Open_App) {
+                                    startApp(mContext, ListItem.getAdvert2().getOpenTarget());
+                                }
+                            }
+                        });
 
                         convertView.setTag(viewHolderAdvert);
                         break;

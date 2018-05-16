@@ -37,8 +37,8 @@ public class AppStaticView extends RelativeLayout {
                             "http://pp.myapp.com/ma_icon/0/icon_10265_1439195638/96",
                             "旅行翻译官", "让您的设备开口说话，旅行不再愁", "300万人好评", "8.96MB"), null, null),
             new AppListItem(AppListAdapter.Type_Advert,
-                    null, new AppListAdvert(15, "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525939853620&di=b5a4f6a178a48c8711c5713520109132&imgtype=0&src=http%3A%2F%2Fimg.wanyx.com%2FUploads%2Fueditor%2Fimage%2F20170407%2F1491558056524649.jpg",null),
-                        new AppListAdvert(16, "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525940097760&di=73214445386a9b00b4c1a2151e6c4ba8&imgtype=0&src=http%3A%2F%2Fi2.17173cdn.com%2F2fhnvk%2FYWxqaGBf%2Fcms3%2FvLytDRblbjclAmv.jpg",null)),
+                    null, new AppListAdvert(15, "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525939853620&di=b5a4f6a178a48c8711c5713520109132&imgtype=0&src=http%3A%2F%2Fimg.wanyx.com%2FUploads%2Fueditor%2Fimage%2F20170407%2F1491558056524649.jpg","http://www.baidu.com"),
+                        new AppListAdvert(16, "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525940097760&di=73214445386a9b00b4c1a2151e6c4ba8&imgtype=0&src=http%3A%2F%2Fi2.17173cdn.com%2F2fhnvk%2FYWxqaGBf%2Fcms3%2FvLytDRblbjclAmv.jpg","https://www.sogou.com/")),
             new AppListItem(AppListAdapter.Type_App,
                     new AppListApp(3, "com.moji.mjweather", "http://imtt.dd.qq.com/16891/7D23C31900EE6F4166F8E1787EFD6578.apk",
                             "http://pp.myapp.com/ma_icon/0/icon_9206_1526024837/96",
@@ -92,8 +92,8 @@ public class AppStaticView extends RelativeLayout {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         Log.d(TAG, "onAttachedToWindow");
+
         IntentFilter filterInstall = new IntentFilter();
-        filterInstall.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
         filterInstall.addAction(Intent.ACTION_PACKAGE_ADDED);
         filterInstall.addAction(Intent.ACTION_PACKAGE_REMOVED);
         filterInstall.addDataScheme("package");
@@ -114,12 +114,7 @@ public class AppStaticView extends RelativeLayout {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if(DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
-                long id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
-                if(appListAdapter != null) {
-                    appListAdapter.downloadComplete(id);
-                }
-            } else if(Intent.ACTION_PACKAGE_ADDED.equals(action)) {
+            if(Intent.ACTION_PACKAGE_ADDED.equals(action)) {
                 String packageName = intent.getData().getSchemeSpecificPart();
                 if(appListAdapter != null) {
                     appListAdapter.installComplete(packageName);
