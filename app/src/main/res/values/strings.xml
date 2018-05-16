@@ -31,4 +31,17 @@
     <string name="room_service">客房服务</string>
     <string name="more">更多</string>
     <string name="vip_service">会员服务</string>
+    <string name="app_title_text">精选APP</string>
+    <string name="app_item_icon">APP图标</string>
+    <string name="app_item_title">APP标题</string>
+    <string name="app_item_desc">APP描述</string>
+    <string name="app_item_favorites">APP好评</string>
+    <string name="app_item_size">APP大小</string>
+    <string name="app_btn_open">打开</string>
+    <string name="app_btn_install">安装</string>
+    <string name="app_btn_downloading">下载中</string>
+    <string name="app_btn_pause">暂停</string>
+    <string name="app_btn_continue">继续安装</string>
+    <string name="app_btn_installing">安装中</string>
+    <string name="app_list_advert">APP列表广告</string>
 </resources>

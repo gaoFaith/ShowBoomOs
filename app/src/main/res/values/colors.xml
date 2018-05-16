@@ -17,4 +17,10 @@
     <color name="youzan_white_bg">#ffffff</color>
     <color name="youzan_three_bg">#ffeeee</color>
     <color name="progress_bg">#80000000</color>
+    <color name="rect_stroke">#0095f3</color>
+    <color name="rect_normal">@android:color/transparent</color>
+    <color name="rect_pressed">#330095f3</color>
+    <color name="rect_progress">#0095f3</color>
+    <color name="rect_progressbg">@android:color/transparent</color>
+    <color name="normal_text">#333333</color>
 </resources>

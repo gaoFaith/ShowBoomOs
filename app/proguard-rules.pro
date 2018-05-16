@@ -28,3 +28,13 @@
 #
 ## for DexGuard only
 #-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+# Glide混淆规则
+-keep class android.support.**{*;}
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+    **[] $VALUES;
+    public *;
+}
+# for DexGuard only
+-keepresourcexmlelements manifest/application/meta-data@value=GlideModule

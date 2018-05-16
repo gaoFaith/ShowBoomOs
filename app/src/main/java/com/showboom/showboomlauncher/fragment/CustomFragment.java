@@ -13,6 +13,7 @@ import com.showboom.showboomlauncher.App;
 import com.showboom.showboomlauncher.R;
 import com.showboom.showboomlauncher.activity.HomeActivity;
 import com.showboom.showboomlauncher.bean.ScreenInfo;
+import com.showboom.showboomlauncher.widget.AppStaticView;
 import com.showboom.showboomlauncher.widget.HomeView;
 import com.showboom.showboomlauncher.widget.HomeWebView;
 
@@ -77,7 +78,8 @@ public class CustomFragment extends Fragment {
                 ((HomeWebView) view).setContext(this.getContext(),"http://www.showboom.cn/round/index.html#/");
                 break;
             case 3:
-
+                view = inflater.inflate(R.layout.activity_app, container, false);
+                //((AppStaticView) view).setContext(this.getContext(),activity);
                 break;
         }
         return view;

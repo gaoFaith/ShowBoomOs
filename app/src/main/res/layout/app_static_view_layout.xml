@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/staticviewgroup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f6f6">
+    <include layout="@layout/app_static_title"/>
+    <include android:id="@+id/app_list_scroll_view"
+        layout="@layout/app_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/static_title"/>
+
+</RelativeLayout>

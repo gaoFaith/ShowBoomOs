@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/number_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="84dp"
+    android:background="#f5f6f6">
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/app_item_icon"
+        android:src="@drawable/app_icon_bg" />
+
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/app_icon"
+        android:layout_alignTop="@id/app_icon"
+        android:layout_marginStart="12dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:text="@string/app_item_title"/>
+
+    <TextView
+        android:id="@+id/app_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_title"
+        android:layout_alignStart="@id/app_title"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        android:maxEms="14"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="@string/app_item_desc"/>
+
+    <TextView
+        android:id="@+id/app_favorites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/app_title"
+        android:layout_alignBottom="@id/app_icon"
+        android:textColor="#999999"
+        android:textSize="12sp"
+        android:text="@string/app_item_favorites"/>
+
+    <TextView
+        android:id="@+id/app_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/app_icon"
+        android:layout_toEndOf="@id/app_favorites"
+        android:layout_marginStart="16dp"
+        android:textColor="#999999"
+        android:textSize="12sp"
+        android:text="@string/app_item_size"/>
+
+    <Button
+        android:id="@+id/btn_open"
+        style="@style/btn_app_open_style"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="12dp"
+        android:text="@string/app_btn_open"
+        android:textSize="16sp"/>
+
+    <com.showboom.showboomlauncher.widget.ProgressButton
+        android:id="@+id/btn_install"
+        style="@style/btn_app_install_style"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="12dp"
+        android:text="@string/app_btn_install"
+        android:textSize="16sp"
+        android:visibility="gone"/>
+
+</RelativeLayout>
