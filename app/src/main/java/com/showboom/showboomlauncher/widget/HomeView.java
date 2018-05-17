@@ -22,8 +22,10 @@ import com.showboom.showboomlauncher.listener.NoDoubleClickListener;
 import com.showboom.showboomlauncher.loader.GlideImageLoader;
 import com.showboom.showboomlauncher.utils.StringUtil;
 import com.showboom.showboomlauncher.utils.T;
+import com.showboom.showboomlauncher.voip.Transition;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
+import com.yuntongxun.ecsdk.ECVoIPCallManager;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -168,7 +170,26 @@ public class HomeView extends RelativeLayout implements OnBannerListener, MyScro
                 listener.showRecommendLayout();
                 break;
             case R.id.home_service_one:
+                String toAccountVoice = "358239056696547";
+                String nickname = "前台";
+                String message= String.format(getResources().getString(R.string.sure_call_voip), nickname);
+                CustomConfirmDialog.createDialog(context, new CustomConfirmDialog.BtnClickListener() {
+                    @Override
+                    public void sure() {
+                        Transition.startCallAction(
+                                context,
+                                ECVoIPCallManager.CallType.VOICE,
+                                "正在呼叫-"+nickname,
+                                toAccountVoice,
+                                "手机号",
+                                false
+                        );
+                    }
+                    @Override
+                    public void cancel() {
 
+                    }
+                }, message).show();
                 break;
             case R.id.home_service_two:
             case R.id.home_service_three:

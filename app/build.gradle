@@ -22,7 +22,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
 //        manifestPlaceholders = [
 //                JPUSH_PKGNAME: applicationId,
 //                JPUSH_APPKEY : "111", //JPush上注册的包名对应的appkey.
@@ -38,6 +42,12 @@ android {
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
     }
 }
 
@@ -78,4 +88,9 @@ dependencies {
     //    compile 'cn.jiguang.sdk:jpush:3.1.1'  // 此处以JPush 3.1.1 。
     //    compile 'cn.jiguang.sdk:jcore:1.1.9'  // 此处以JCore 1.1.9 。
     implementation 'com.android.support:design:27.1.1'
+
+    compile(name: 'Yuntx_Android_VoIP_Plugin_v1.3.0', ext: 'aar')
+    compile(name: 'Yuntx_Android_Common_Plugin_v1.3.0', ext: 'aar')
+    compile files('libs/MiPush_SDK_Client_3_2_2.jar')
+    compile files('libs/HwPush_SDK_NOMAP_V2705.jar')
 }

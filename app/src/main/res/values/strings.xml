@@ -44,4 +44,5 @@
     <string name="app_btn_continue">继续安装</string>
     <string name="app_btn_installing">安装中</string>
     <string name="app_list_advert">APP列表广告</string>
+    <string name="sure_call_voip">是否呼叫%1$s？</string>
 </resources>
