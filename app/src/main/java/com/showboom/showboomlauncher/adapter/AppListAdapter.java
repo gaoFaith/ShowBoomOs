@@ -7,8 +7,10 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -113,8 +115,16 @@ public class AppListAdapter extends BaseAdapter {
                                 holder.viewHolder.btnInstall.setText(R.string.app_btn_install);
                                 File apkfile = new File(fileName);
                                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                                intent.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                    intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                    Uri contentUri = FileProvider.getUriForFile(context,
+                                            "com.showboom.showboomlauncher.fileprovider",
+                                            apkfile);
+                                    intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+                                } else {
+                                    intent.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
+                                }
                                 context.startActivity(intent);
                             }
                         }
@@ -365,7 +375,10 @@ public class AppListAdapter extends BaseAdapter {
                                     //点击安装按钮，开始下载
                                     viewHolderApp.btnInstall.setText(R.string.app_btn_downloading);
 
+                                    String apkName = Long.toString(System.currentTimeMillis()) + ".apk";
+
                                     DownloadManager.Request request = new DownloadManager.Request(Uri.parse(ListItem.getApp().getPkgUrl()));
+                                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, apkName);
                                     request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
                                     long id = downloadManager.enqueue(request);
                                     Log.d(TAG, "downloadManager id="+id);

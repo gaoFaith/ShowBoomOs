@@ -33,7 +33,7 @@ public class AppStaticView extends RelativeLayout {
                             "http://pp.myapp.com/ma_icon/0/icon_7678_1525245885/96",
                             "高德地图", "中国专业的手机地图，超过7亿用户正在使用！", "3000万人好评", "68.29MB"), null, null),
             new AppListItem(AppListAdapter.Type_App,
-                    new AppListApp(2, "com.mfw.voiceguide", "http://imtt.dd.qq.com/16891/EE20199A42CA220D2B092893A9F3D28A.apk",
+                    new AppListApp(2, "com.mfw.voiceguide", "http://gdown.baidu.com/data/wisegame/f59af74d0a3ef730/lvxingfanyiguan_95.apk",
                             "http://pp.myapp.com/ma_icon/0/icon_10265_1439195638/96",
                             "旅行翻译官", "让您的设备开口说话，旅行不再愁", "300万人好评", "8.96MB"), null, null),
             new AppListItem(AppListAdapter.Type_Advert,
