@@ -539,7 +539,7 @@ public class AppListAdapter extends BaseAdapter {
                 holderRecord.viewHolder.btnInstall.setVisibility(View.VISIBLE);
                 holderRecord.viewHolder.btnOpen.setVisibility(View.GONE);
 
-                holderRecord.viewHolder.btnInstall.setProgress(0);
+                holderRecord.viewHolder.btnInstall.setNormalBg();
                 holderRecord.viewHolder.btnInstall.setText(R.string.app_btn_install);
             }
         }

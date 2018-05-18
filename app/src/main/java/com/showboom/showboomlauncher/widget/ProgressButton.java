@@ -120,6 +120,10 @@ public class ProgressButton extends Button {
         }
     }
 
+    public void setNormalBg() {
+        setBackgroundCompat(mProgressDrawableBg);
+    }
+
     public int getProgress() {
         return mProgress;
     }
