@@ -3,8 +3,11 @@ package com.showboom.showboomlauncher.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.ViewGroup;
+
+import com.showboom.showboomlauncher.App;
 
 import java.util.List;
 
@@ -31,7 +34,7 @@ public abstract class BaseFragmentPagerAdapter extends FragmentPagerAdapter {
         String tag = fragment.getTag();
         //保存每个Fragment的Tag
         tags.put(position, tag);
-//        Log.e(App.TAG, "tag==" + tag + "_position=" + position);
+        Log.e(App.TAG, "tag==" + tag + "_position=" + position);
         return fragment;
     }
 

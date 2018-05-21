@@ -6,23 +6,24 @@ package com.showboom.showboomlauncher;
 
 public interface Constants {
     //test url
-    String baseUtl = "http://hsm.test.showboom.cn/";
+    String baseUtl = "http://s.test.showboom.cn/";
     boolean DEBUG_MODE = true;
     //official url
 //    String baseUtl = "http://hsm.shwoboom.cn/";
     int TIME_OUT = 20;
+    String USER_STOKEN = "hm_stoken";
+    String HM_QR_URL = "https://u.showboom.cn/ucenter?";
+    String USER_NAME = "hm_name";
+    String USER_IMG = "hm_img";
+    String USER_RENTID = "rentId";
     String STOKEN = "user_stoken";
-    String IS_LOAD = "is_load";
-    String USER_ACCOUNT = "user_account";
-    String USER_NAME = "user_name";
-    String IS_ADMIN = "is_admin";
-    String ROLE_NAME = "role_name";
-    String BUILDING = "building";
-    String FLOOR = "floor";
-    String RANGE_LIST = "range_list";
-    String ROLE_LIST = "role_list";
-    String HOTEL = "hotel_name";
     String USER_ID = "id";
+    String IMEI = "&imei=";
+    String ICCID = "&iccid=";
+    String VERSION = "&proversion=";
+    String SERVICE = "service=deviceStatus";
+    String PRO = "&pro=";
+    String IS_LOAD = "is_load";
     String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
     String KEY_TITLE = "title";
     String KEY_MESSAGE = "message";

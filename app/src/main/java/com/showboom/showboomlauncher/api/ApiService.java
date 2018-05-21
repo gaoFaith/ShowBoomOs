@@ -3,6 +3,7 @@ package com.showboom.showboomlauncher.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.showboom.showboomlauncher.Constants;
+import com.showboom.showboomlauncher.bean.LauncherDataBean;
 import com.showboom.showboomlauncher.bean.UpdateJPushBean;
 import com.showboom.showboomlauncher.net.RequestInterceptor;
 import com.showboom.showboomlauncher.net.ResponseInterceptor;
@@ -72,6 +73,15 @@ public class ApiService {
      */
     public void updateJpushService(Observer<UpdateJPushBean> observer, Map<String, Object> map) {
         mApiInterface.updateJpushId(map).compose(SchedulersTransformer.io_main())
+                .map(new HttpResultFunc<>())
+                .subscribe(observer);
+    }
+
+    /**
+     * 获取主屏数据
+     */
+    public void getScreenData(Observer<LauncherDataBean> observer, Map<String, Object> map) {
+        mApiInterface.getLauncherScreenData(map).compose(SchedulersTransformer.io_main())
                 .map(new HttpResultFunc<>())
                 .subscribe(observer);
     }

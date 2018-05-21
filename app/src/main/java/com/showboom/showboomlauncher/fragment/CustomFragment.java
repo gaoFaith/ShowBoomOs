@@ -4,16 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.showboom.showboomlauncher.App;
 import com.showboom.showboomlauncher.R;
 import com.showboom.showboomlauncher.activity.HomeActivity;
 import com.showboom.showboomlauncher.bean.ScreenInfo;
-import com.showboom.showboomlauncher.widget.AppStaticView;
 import com.showboom.showboomlauncher.widget.HomeView;
 import com.showboom.showboomlauncher.widget.HomeWebView;
 
@@ -58,7 +55,7 @@ public class CustomFragment extends Fragment {
         }
         tag = bundle.getString(BUNDLE_TAG_KEY);
         position = bundle.getInt(BUNDLE_POSITION_KEY, -1);
-        Log.d(App.TAG, "layoutResId" + layoutResId + ";screen_tag_key=" + tag + ";position=" + position);
+        //Log.d(App.TAG, "layoutResId" + layoutResId + ";screen_tag_key=" + tag + ";position=" + position);
     }
 
     @Nullable

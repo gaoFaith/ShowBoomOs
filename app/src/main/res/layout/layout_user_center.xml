@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/user_center_layout"
     android:layout_width="match_parent"
-    android:layout_height="249px"
+    android:layout_height="125dp"
     android:background="@drawable/home_user_center_click_bg"
     android:clickable="true"
     android:elevation="10dp"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:paddingLeft="16px">
+            android:paddingLeft="8dp">
             <TextView
                 android:id="@+id/user_name"
                 android:layout_width="wrap_content"
@@ -34,16 +34,16 @@
                 android:singleLine="true"
                 android:text="微信昵称"
                 android:textColor="#333333"
-                android:textSize="24px"/>
+                android:textSize="12dp"/>
             <TextView
                 android:id="@+id/user_leave_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10px"
+                android:layout_marginTop="5dp"
                 android:singleLine="true"
                 android:text="离店时间：2018.5.16"
                 android:textColor="#666666"
-                android:textSize="20px"/>
+                android:textSize="10dp"/>
         </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"

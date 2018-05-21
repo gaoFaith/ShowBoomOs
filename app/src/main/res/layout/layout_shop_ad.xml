@@ -15,7 +15,7 @@
         android:layout_marginTop="22dp"
         android:text="精选服务让旅行更美好"
         android:textColor="@color/home_service_text"
-        android:textSize="36px"
+        android:textSize="18dp"
         android:textStyle="bold"/>
     <LinearLayout
         android:id="@+id/youzan_shop_layout"
@@ -51,7 +51,7 @@
                     android:layout_marginTop="12dp"
                     android:text="智能音响"
                     android:textColor="@color/youzan_title"
-                    android:textSize="28px"/>
+                    android:textSize="14dp"/>
                 <TextView
                     android:id="@+id/youzan_one_subhead"
                     android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                     android:layout_marginTop="5dp"
                     android:text="品质保证"
                     android:textColor="@color/youzan_subhead"
-                    android:textSize="20px"/>
+                    android:textSize="10dp"/>
             </RelativeLayout>
             <LinearLayout
                 android:id="@+id/youzan_shop_two"
@@ -81,7 +81,7 @@
                     android:layout_marginTop="12dp"
                     android:text="氧力多"
                     android:textColor="@color/youzan_title"
-                    android:textSize="28px"/>
+                    android:textSize="14dp"/>
                 <TextView
                     android:id="@+id/youzan_two_subhead"
                     android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
                     android:layout_marginTop="5dp"
                     android:text="鲜氧洗涤不用搓"
                     android:textColor="@color/youzan_subhead"
-                    android:textSize="20px"/>
+                    android:textSize="10dp"/>
                 <ImageView
                     android:id="@+id/youzan_two"
                     android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
                     android:layout_marginTop="12dp"
                     android:text="德福隆珍菌"
                     android:textColor="@color/youzan_title"
-                    android:textSize="28px"/>
+                    android:textSize="14dp"/>
                 <TextView
                     android:id="@+id/youzan_three_subhead"
                     android:layout_width="wrap_content"
@@ -134,7 +134,7 @@
                     android:layout_marginTop="5dp"
                     android:text="壹品菌类"
                     android:textColor="@color/youzan_subhead"
-                    android:textSize="20px"/>
+                    android:textSize="10dp"/>
                 <ImageView
                     android:id="@+id/youzan_three"
                     android:layout_width="wrap_content"
@@ -162,7 +162,7 @@
                     android:layout_marginTop="12dp"
                     android:text="雪媚娘蛋黄酥"
                     android:textColor="@color/youzan_title"
-                    android:textSize="28px"/>
+                    android:textSize="14dp"/>
                 <TextView
                     android:id="@+id/youzan_four_subhead"
                     android:layout_width="wrap_content"
@@ -171,7 +171,7 @@
                     android:layout_marginTop="5dp"
                     android:text="极道茶品"
                     android:textColor="@color/youzan_subhead"
-                    android:textSize="20px"/>
+                    android:textSize="10dp"/>
                 <ImageView
                     android:id="@+id/youzan_four"
                     android:layout_width="wrap_content"
@@ -199,7 +199,7 @@
                     android:layout_marginTop="12dp"
                     android:text="Beats耳机"
                     android:textColor="@color/youzan_title"
-                    android:textSize="28px"/>
+                    android:textSize="14dp"/>
                 <TextView
                     android:id="@+id/youzan_five_subhead"
                     android:layout_width="wrap_content"
@@ -208,7 +208,7 @@
                     android:layout_marginTop="5dp"
                     android:text="潮流新品"
                     android:textColor="@color/youzan_subhead"
-                    android:textSize="20px"/>
+                    android:textSize="10dp"/>
                 <ImageView
                     android:id="@+id/youzan_five"
                     android:layout_width="wrap_content"
@@ -243,7 +243,7 @@
                 android:layout_marginTop="12dp"
                 android:text="中信书院"
                 android:textColor="@color/youzan_title"
-                android:textSize="28px"/>
+                android:textSize="14dp"/>
             <TextView
                 android:id="@+id/youzan_app_one__subhead"
                 android:layout_width="wrap_content"
@@ -252,7 +252,7 @@
                 android:layout_marginTop="5dp"
                 android:text="用心推荐"
                 android:textColor="@color/youzan_subhead"
-                android:textSize="20px"/>
+                android:textSize="10dp"/>
             <ImageView
                 android:id="@+id/youzan_app_one_img"
                 android:layout_width="wrap_content"
@@ -280,7 +280,7 @@
                 android:layout_marginTop="12dp"
                 android:text="AI导游"
                 android:textColor="@color/youzan_title"
-                android:textSize="28px"/>
+                android:textSize="14dp"/>
             <TextView
                 android:id="@+id/youzan_app_two_subhead"
                 android:layout_width="wrap_content"
@@ -289,7 +289,7 @@
                 android:layout_marginTop="5dp"
                 android:text="全能导游"
                 android:textColor="@color/youzan_subhead"
-                android:textSize="20px"/>
+                android:textSize="10dp"/>
             <ImageView
                 android:id="@+id/youzan_app_two_img"
                 android:layout_width="wrap_content"
@@ -317,7 +317,7 @@
                 android:layout_marginTop="12dp"
                 android:text="贴身医疗"
                 android:textColor="@color/youzan_title"
-                android:textSize="28px"/>
+                android:textSize="14dp"/>
             <TextView
                 android:id="@+id/youzan_app_three_subhead"
                 android:layout_width="wrap_content"
@@ -326,7 +326,7 @@
                 android:layout_marginTop="5dp"
                 android:text="随身医生"
                 android:textColor="@color/youzan_subhead"
-                android:textSize="20px"/>
+                android:textSize="10dp"/>
             <ImageView
                 android:id="@+id/youzan_app_three_img"
                 android:layout_width="wrap_content"

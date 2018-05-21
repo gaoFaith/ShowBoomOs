@@ -2,6 +2,7 @@ package com.showboom.showboomlauncher.api;
 
 
 import com.showboom.showboomlauncher.bean.HttpResult;
+import com.showboom.showboomlauncher.bean.LauncherDataBean;
 import com.showboom.showboomlauncher.bean.UpdateJPushBean;
 
 import java.util.Map;
@@ -23,6 +24,13 @@ public interface ApiInterface {
      * 上报极光ID
      */
     @FormUrlEncoded
-    @POST("api/service/index")
+    @POST("api/api/index")
     Observable<HttpResult<UpdateJPushBean>> updateJpushId(@FieldMap() Map<String, Object> map);
+
+    /**
+     * 获取主屏数据
+     */
+    @FormUrlEncoded
+    @POST("api/api/index")
+    Observable<HttpResult<LauncherDataBean>> getLauncherScreenData(@FieldMap() Map<String, Object> map);
 }

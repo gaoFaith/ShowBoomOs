@@ -45,4 +45,5 @@
     <string name="app_btn_installing">安装中</string>
     <string name="app_list_advert">APP列表广告</string>
     <string name="sure_call_voip">是否呼叫%1$s？</string>
+    <string name="hotel_scan_qr_hint">请使用微信扫码\n享受秀豹高速专属网络</string>
 </resources>

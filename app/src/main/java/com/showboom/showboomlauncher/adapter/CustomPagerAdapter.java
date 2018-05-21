@@ -31,6 +31,7 @@ public class CustomPagerAdapter extends BaseFragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        //Log.e(App.TAG, "getItem==" + position);
         return CustomFragment.newInstance(info, lrcs.get(position), position);
     }
 

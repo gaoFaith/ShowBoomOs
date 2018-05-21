@@ -33,7 +33,6 @@
             <include layout="@layout/layout_home_recommend"/>
         </LinearLayout>
     </com.showboom.showboomlauncher.widget.MyScrollView>
-    <!--android:background="@mipmap/toobar_bg"-->
     <android.support.v7.widget.Toolbar
         android:id="@+id/home_toolbar"
         android:layout_width="match_parent"
@@ -62,7 +61,7 @@
                 android:singleLine="true"
                 android:text="华里南山店 #808"
                 android:textColor="#ffff"
-                android:textSize="36px"/>
+                android:textSize="18dp"/>
             <ImageView
                 android:id="@+id/wifi_img"
                 android:layout_width="28dp"

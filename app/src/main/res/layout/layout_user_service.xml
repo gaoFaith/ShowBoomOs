@@ -13,7 +13,7 @@
         android:layout_marginTop="22dp"
         android:text="私人管家24小时为您服务"
         android:textColor="@color/home_service_text"
-        android:textSize="36px"
+        android:textSize="18dp"
         android:textStyle="bold"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:layout_marginLeft="12dp"
                 android:text="客房电话"
                 android:textColor="@color/home_service_text"
-                android:textSize="24px"/>
+                android:textSize="12dp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/home_service_two"
@@ -65,7 +65,7 @@
                 android:layout_marginLeft="12dp"
                 android:text="房间打扫"
                 android:textColor="@color/home_service_text"
-                android:textSize="24px"/>
+                android:textSize="12dp"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -95,7 +95,7 @@
                 android:layout_marginLeft="12dp"
                 android:text="物品租借"
                 android:textColor="@color/home_service_text"
-                android:textSize="24px"/>
+                android:textSize="12dp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/home_service_four"
@@ -118,7 +118,7 @@
                 android:layout_marginLeft="12dp"
                 android:text="高速WIFI"
                 android:textColor="@color/home_service_text"
-                android:textSize="24px"/>
+                android:textSize="12dp"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -10,6 +10,7 @@ import android.util.Log;
 import com.huawei.android.pushagent.api.PushManager;
 import com.showboom.showboomlauncher.utils.HmSharedPreferencesUtils;
 import com.showboom.showboomlauncher.utils.NetUtils;
+import com.showboom.showboomlauncher.utils.StringUtil;
 import com.showboom.showboomlauncher.utils.T;
 import com.showboom.showboomlauncher.voip.VoipImpl;
 import com.xiaomi.channel.commonutils.logger.LoggerInterface;
@@ -30,7 +31,9 @@ public class App extends Application {
     public static final String TAG = "ShowBoom";
     public static Context context;
     //屏幕宽和高
-    public static int H,W;
+    public static int H, W;
+    public static String url;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -38,6 +41,7 @@ public class App extends Application {
         HmSharedPreferencesUtils.getInstance(context);
         //JPushInterface.setDebugMode(true);
         //JPushInterface.init(context);
+        getUrl();
         T.register(this);
         NetUtils.register(this);
 
@@ -59,10 +63,19 @@ public class App extends Application {
             PushManager.requestToken(getApplicationContext());
         }
     }
+
+    private void getUrl() {
+        if (StringUtil.getUrlTag() == 0) {
+            url = "https://s.heimilink.com/api/api/index";
+        } else {
+            url = "http://s.test.heimilink.com/api/api/index";
+        }
+    }
+
     public void getScreen(Context aty) {
         DisplayMetrics dm = aty.getResources().getDisplayMetrics();
-        H=dm.heightPixels;
-        W=dm.widthPixels;
+        H = dm.heightPixels;
+        W = dm.widthPixels;
     }
 
     /**

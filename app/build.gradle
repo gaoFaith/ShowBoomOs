@@ -59,7 +59,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //glide图片
-//    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //    compile 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     implementation 'jp.wasabeef:glide-transformations:3.3.0'
@@ -88,9 +88,9 @@ dependencies {
     //    compile 'cn.jiguang.sdk:jpush:3.1.1'  // 此处以JPush 3.1.1 。
     //    compile 'cn.jiguang.sdk:jcore:1.1.9'  // 此处以JCore 1.1.9 。
     implementation 'com.android.support:design:27.1.1'
-
     compile(name: 'Yuntx_Android_VoIP_Plugin_v1.3.0', ext: 'aar')
     compile(name: 'Yuntx_Android_Common_Plugin_v1.3.0', ext: 'aar')
     compile files('libs/MiPush_SDK_Client_3_2_2.jar')
     compile files('libs/HwPush_SDK_NOMAP_V2705.jar')
+    implementation files('libs/core-3.2.1.jar')
 }
